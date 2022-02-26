@@ -10,14 +10,19 @@ class User:
     def info(self):
         return f"{self.name} - {self.email} - {self.__role}"
 
-    def update_role(self, new_role):
+    @property
+    def role(self):
+        return self.__role
+
+    @role.setter
+    def role(self, new_role):
         if self.__role != "user":
             self.__role = new_role
 
-    def getRole(self):
-        return self.__role
+    
 
 broto = User("BROTOFS", "broto@gmail.com", "user")
-print(broto.__dict__)
-print(broto._User__role)
-print(broto.getRole())
+
+print(broto.info())
+broto.role = "super_admin"
+print(broto.info())
